@@ -38,11 +38,6 @@ describe "Ec2Stack" do
         subject { resources }
 
         it { should have_key "HelloWorldAsgAutoScalingGroup" }
-        # it { should have_key "SkeletonRouteTable" }
-        # it { should have_key "SkeletonVpc" }
-        # it { should have_key "SkeletonVpcGatewayAttachment" }
-        # it { should have_key "SkeletonVpcGatewayAttachment" }
-        # it { should_not have_key "FirewallSecurityGroup" }
 
         context "HelloWorldAsgAutoScalingGroup" do
           let(:hello_world_asg_autoscaling_group) do
@@ -99,21 +94,6 @@ describe "Ec2Stack" do
                 it { should eq "HelloWorldAsgLaunchConfiguration" }
               end
             end
-
-            context "LoadBalancerNames" do
-              let(:load_balancer_names) { properties["LoadBalancerNames"] }
-              subject { load_balancer_names }
-
-              it { should have_key all "Ref" }
-            end
-
-              # it { should have_key "Ref" }
-              #
-              # context "Ref" do
-              #   subject { load_balancer_names["Ref"] }
-              #
-              #   it { should eq "HelloWorldAsgLoadBalancerLoadBalancer" }
-              # end
 
             context "MaxSize" do
               subject { properties["MaxSize"] }
