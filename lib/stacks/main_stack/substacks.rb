@@ -25,6 +25,21 @@ module Concerns
             }
           end
         end
+        resource :load_balancers_stacks,
+                 type: Halloumi::AWS::CloudFormation::Stack do |r|
+          r.property(:template_url) do
+            "#{ENV["STACK_NAME"]}-load-balancers-stack.json"
+          end
+          r.property(:parameters) do
+            {
+              SkeletonInternetGatewayId:
+                skeleton_stack.ref_output_SkeletonInternetGatewayId,
+              SkeletonRouteTableId:
+                skeleton_stack.ref_output_SkeletonRouteTableId,
+              SkeletonVpcId: skeleton_stack.ref_output_SkeletonVpcId
+            }
+          end
+        end
       end
     end
   end

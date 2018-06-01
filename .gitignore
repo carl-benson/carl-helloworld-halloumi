@@ -16,3 +16,4 @@
 /rdoc
 /test-reports
 /packer/*/config.json
+/Gemfile.lock
